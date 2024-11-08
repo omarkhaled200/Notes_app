@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Views/widgets/Add_note_model_sheet.dart';
 import 'package:notes_app/Views/widgets/notesviewbody.dart';
+import 'package:notes_app/constant.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
@@ -27,8 +28,8 @@ class NotesView extends StatelessWidget {
             FontAwesomeIcons.plus,
             color: Colors.black,
           ),
-          backgroundColor: Color(0xff54EED9),
-          shape: CircleBorder(),
+          backgroundColor:kprimarycolor,
+          shape:const CircleBorder(),
         ),
         body: const NotesViewbody());
   }

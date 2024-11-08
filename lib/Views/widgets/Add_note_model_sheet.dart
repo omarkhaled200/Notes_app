@@ -12,7 +12,7 @@ class AddNotemodelsheet extends StatelessWidget {
     return const Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(
-        child: const Column(
+        child: Column(
           children: [
             SizedBox(
               height: 32,
