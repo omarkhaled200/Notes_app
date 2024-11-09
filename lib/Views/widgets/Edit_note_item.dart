@@ -8,10 +8,10 @@ class EditNoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: const EdgeInsets.symmetric(horizontal:  24.0),
+      padding:  EdgeInsets.symmetric(horizontal:  24.0),
       child: Column(
         children: [
-          SizedBox(height: 50,),
+          SizedBox(height: 60,),
           Customappbar(title: "Edit Notes", icon: Icons.check),
           SizedBox(height: 40,),
           CustomTextField(hint: 'Title',),

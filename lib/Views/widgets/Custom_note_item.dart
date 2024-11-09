@@ -12,30 +12,30 @@ class CustomNoteitem extends StatelessWidget {
         Navigator.pushNamed(context, EditNoteViewBody.id);
       },
       child: Container(
-        padding: const EdgeInsets.only(top: 24, left: 16, bottom: 24),
+        padding: const EdgeInsets.only(top: 16, left: 16, bottom: 16),
         decoration: BoxDecoration(
-          color: Color(0xffffcc80),
+          color: const Color(0xffffcc80),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: Text(
+              title:const Text(
                 'Flutter tips',
-                style: TextStyle(color: Colors.black, fontSize: 28),
+                style: TextStyle(color: Colors.black, fontSize: 26),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                 child: Text(
                   'Build your career with omar khaled',
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.4), fontSize: 22),
+                      color: Colors.black.withOpacity(0.4), fontSize: 20),
                 ),
               ),
               trailing: IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon:const Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
                   size: 22,
@@ -43,7 +43,7 @@ class CustomNoteitem extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 24, bottom: 16),
+              padding: const EdgeInsets.only(right: 24, bottom: 8),
               child: Text(
                 'May 20 , 2022',
                 style: TextStyle(
