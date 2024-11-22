@@ -70,7 +70,7 @@ class _AddnoteformState extends State<Addnoteform> {
             },
           ),
           const SizedBox(
-            height: 24,
+            height: 24 ,
           ),
         ],
       ),
