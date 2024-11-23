@@ -4,3 +4,4 @@ part of 'notescubit_cubit.dart';
 abstract class NotescubitState {}
 
 class NotescubitInitial extends NotescubitState {}
+class noteSuccess extends  NotescubitState {}
