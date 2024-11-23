@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app/Views/widgets/Color_List_view.dart';
 import 'package:notes_app/Views/widgets/Custom_buttom_add_note.dart';
 import 'package:notes_app/Views/widgets/Custom_text_field.dart';
 import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
@@ -49,10 +50,14 @@ class _AddnoteformState extends State<Addnoteform> {
           const SizedBox(
             height: 40,
           ),
+      const   ColorListview(),
+          const SizedBox(
+            height: 40,
+          ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustombuttomAddnote(
-                isloading: state is AddNoteloading? true : false,
+                isloading: state is AddNoteloading ? true : false,
                 ontap: () {
                   DateTime now = DateTime.now();
                   String formattedDate = DateFormat.yMMMEd().format(now);
@@ -73,7 +78,7 @@ class _AddnoteformState extends State<Addnoteform> {
             },
           ),
           const SizedBox(
-            height: 24 ,
+            height: 24,
           ),
         ],
       ),
