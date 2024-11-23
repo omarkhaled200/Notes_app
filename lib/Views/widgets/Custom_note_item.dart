@@ -4,7 +4,7 @@ import 'package:notes_app/Views/edit_note_view_body.dart';
 import 'package:notes_app/model/note_model.dart';
 
 class CustomNoteitem extends StatelessWidget {
-  const CustomNoteitem({super.key,required this.note});
+  const CustomNoteitem({super.key, required this.note});
 
   final NoteModel note;
 
@@ -17,16 +17,16 @@ class CustomNoteitem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 16, left: 16, bottom: 16),
         decoration: BoxDecoration(
-          color:  Color(note.color),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title:  Text(
-              note.title ,
-                style:const TextStyle(color: Colors.black, fontSize: 26),
+              title: Text(
+                note.title,
+                style: const TextStyle(color: Colors.black, fontSize: 26),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8),
@@ -37,7 +37,9 @@ class CustomNoteitem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                },
                 icon: const Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
@@ -48,7 +50,7 @@ class CustomNoteitem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24, bottom: 8),
               child: Text(
-              note.date,
+                note.date,
                 style: TextStyle(
                     color: Colors.black.withOpacity(0.4), fontSize: 14),
               ),
