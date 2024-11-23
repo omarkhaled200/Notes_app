@@ -41,6 +41,8 @@ dependencies:
   flutter_bloc: ^8.1.6
   modal_progress_hud_nsn: ^0.5.1
   intl: ^0.17.0
+  awesome_snackbar_content: ^0.1.1
+
 
 dev_dependencies:
   flutter_test:

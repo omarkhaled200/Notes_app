@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Views/widgets/Color_List_view.dart';
 import 'package:notes_app/Views/widgets/Custom_app_bar.dart';
 import 'package:notes_app/Views/widgets/Custom_text_field.dart';
+import 'package:notes_app/Views/widgets/edit_note_color_list_view.dart';
+import 'package:notes_app/Views/widgets/snackbar.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubit/notes_cubit/notescubit_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
 
@@ -34,6 +38,7 @@ class _EditNoteItemState extends State<EditNoteItem> {
               widget.note.save();
               BlocProvider.of<NotescubitCubit>(context).featchAllNotes();
               Navigator.pop(context);
+              editsnackbarsuccess(context);
             },
           ),
           const SizedBox(
@@ -54,6 +59,12 @@ class _EditNoteItemState extends State<EditNoteItem> {
             },
             hint: widget.note.subtitle,
             maxline: 5,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          EditNoteColorListView(
+            note: widget.note,
           ),
         ],
       ),
