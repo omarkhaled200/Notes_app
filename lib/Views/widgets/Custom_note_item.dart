@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Views/edit_note_view_body.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubit/notes_cubit/notescubit_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
 
@@ -14,8 +15,8 @@ class CustomNoteitem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context){
-          return EditNoteViewBody(note:note);
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return EditNoteViewBody(note: note);
         }));
       },
       child: Container(
@@ -30,7 +31,7 @@ class CustomNoteitem extends StatelessWidget {
             ListTile(
               title: Text(
                 note.title,
-                style: const TextStyle(color: Colors.black, fontSize: 26),
+                style: const TextStyle(color: Colors.black, fontSize: 24),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8),
@@ -40,16 +41,40 @@ class CustomNoteitem extends StatelessWidget {
                       color: Colors.black.withOpacity(0.4), fontSize: 20),
                 ),
               ),
-              trailing: IconButton(
-                onPressed: () {
-                  note.delete();
-                  BlocProvider.of<NotescubitCubit>(context).featchAllNotes();
-                },
-                icon: const Icon(
-                  FontAwesomeIcons.trash,
-                  color: Colors.black,
-                  size: 22,
-                ),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Pin Button
+                  IconButton(
+                    icon: Icon(
+                      note.isPinned ? Icons.push_pin : Icons.push_pin_outlined,
+                      color: note.isPinned ? Colors.orange : Colors.black,
+                    ),
+                    onPressed: () {
+                      context.read<NotescubitCubit>().togglePin(note);
+                    },
+                  ),
+                  // Archive Button
+                  IconButton(
+                    icon: const Icon(
+                      Icons.archive_outlined,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      context.read<NotescubitCubit>().moveToArchive(note);
+                    },
+                  ),
+                  // Delete Button
+                  IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      context.read<NotescubitCubit>().moveToTrash(note);
+                    },
+                  ),
+                ],
               ),
             ),
             Padding(

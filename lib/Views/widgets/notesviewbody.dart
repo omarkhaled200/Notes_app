@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Views/widgets/ArchivedNotesView.dart';
 import 'package:notes_app/Views/widgets/Custom_app_bar.dart';
 import 'package:notes_app/Views/widgets/Custom_listView_item.dart';
+import 'package:notes_app/Views/widgets/DeletedNotesView.dart';
 import 'package:notes_app/cubit/notes_cubit/notescubit_cubit.dart';
 
 class NotesViewbody extends StatefulWidget {
@@ -14,24 +16,47 @@ class NotesViewbody extends StatefulWidget {
 class _NotesViewbodyState extends State<NotesViewbody> {
   @override
   void initState() {
-    BlocProvider.of<NotescubitCubit>(context).featchAllNotes();
+    /// هنا هنجيب كل النوتس اللي مش مؤرشفة بس
+    BlocProvider.of<NotescubitCubit>(context).fetchAllNotes();
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           Customappbar(
             title: "Notes",
-            icon: Icons.search,
+            trashicon: Icons.delete,
+            trashonpressed: () {
+              context.read<NotescubitCubit>().featchDeletedNotes();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TrashView()),
+              ).then((_) {
+                context.read<NotescubitCubit>().fetchAllNotes();
+              });
+            },
+            searchicon: Icons.search,
+            serachonPressed: () {},
+            archiveicon: Icons.archive,
+            archiveonpressed: () {
+              context.read<NotescubitCubit>().featchArchivedNotes();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ArchivedNotesView()),
+              ).then((_) {
+                context.read<NotescubitCubit>().fetchAllNotes();
+              });
+            },
           ),
-          Expanded(child: CustomListViewItem()),
+          const Expanded(child: CustomListViewItem()),
         ],
       ),
     );

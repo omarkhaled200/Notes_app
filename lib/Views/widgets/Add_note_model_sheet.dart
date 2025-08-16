@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -22,7 +21,7 @@ class AddNotemodelsheet extends StatelessWidget {
             snackbarfailure(context);
           }
           if (state is AddNoteSuccess) {
-            BlocProvider.of<NotescubitCubit>(context).featchAllNotes();
+            BlocProvider.of<NotescubitCubit>(context).fetchAllNotes();
             Navigator.pop(context);
             snackbarsuccess(context);
           }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/Views/widgets/Color_List_view.dart';
 import 'package:notes_app/Views/widgets/Custom_app_bar.dart';
 import 'package:notes_app/Views/widgets/Custom_text_field.dart';
 import 'package:notes_app/Views/widgets/edit_note_color_list_view.dart';
 import 'package:notes_app/Views/widgets/snackbar.dart';
-import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubit/notes_cubit/notescubit_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
 
@@ -29,14 +27,14 @@ class _EditNoteItemState extends State<EditNoteItem> {
           const SizedBox(
             height: 60,
           ),
-          Customappbar(
+          CustomEditappbar(
             title: "Edit Notes",
-            icon: Icons.check,
-            onPressed: () {
+            searchicon: Icons.check,
+            serachonPressed: () {
               widget.note.title = title ?? widget.note.title;
               widget.note.subtitle = contant ?? widget.note.subtitle;
               widget.note.save();
-              BlocProvider.of<NotescubitCubit>(context).featchAllNotes();
+              BlocProvider.of<NotescubitCubit>(context).fetchAllNotes();
               Navigator.pop(context);
               editsnackbarsuccess(context);
             },
